@@ -10,18 +10,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main class for testing and timing the sorting algorithms
+ * 
+ * Student solution to ADS Assessed Exercise 1
+ * 
+ * @author Adam Fairlie <2461352f@student.gla.ac.uk>
+ */
 public class Main {
 	
+	/**
+	 * Main class to be run on execution
+	 * 
+	 * @param args A list of command line arguments
+	 */
 	public static void main(String[] args) {
+		//insertion sort constant
 		int k = 15;
 		TimeSortingAlgorithms(k);
 	}
 	
-	
+	/**
+	 * Checks a given array is sorted in descending order
+	 * 
+	 * @param a The array to check
+	 * @return boolean True if the array is sorted, false otherwise
+	 */
 	public static boolean TestSortingAlgorithms(int[] a) {
 		
 		int n = a.length;
-		//loop through array
 		for(int i = 0; i < n - 1; i++) {
 			//if an element is larger than its successor, return false
 			if(a[i] > a[i+1]) {
@@ -32,7 +49,11 @@ public class Main {
 		return true;
 	}
 	
-	
+	/**
+	 * Times all sorting algorithms on a given set of test files
+	 * 
+	 * @param k The insertion constant for the hybrid sort
+	 */
 	public static void TimeSortingAlgorithms(int k){
 		
 		try {

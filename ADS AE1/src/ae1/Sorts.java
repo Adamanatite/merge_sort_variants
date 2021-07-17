@@ -1,12 +1,21 @@
 package ae1;
 
+/**
+ * The class containing the sorting algorithms and a method for generating bad inputs for median of 3 partitioning.
+ * 
+ * Student solution to ADS Assessed Exercise 1
+ * 
+ * @author Adam Fairlie <2461352f@student.gla.ac.uk>
+ */
 public class Sorts {
 	
-	/*
-	 * PART 1A
-	 * */
-	
-	
+	/**
+	 * The quick sort algorithm for sorting an array
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static void QuickSort(int[] A, int p, int r) {
 		if(p < r) {
 			//Partition array and sort each half
@@ -16,7 +25,13 @@ public class Sorts {
 		}
 	}
 	
-	
+	/**
+	 * A helper method to sort elements around a chosen pivot (the last element)
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static int Partition(int[] A, int p, int r) {
 		
 		//initialise pivot as last element
@@ -44,11 +59,14 @@ public class Sorts {
 	}
 	
 	
-	/*
-	 * PART 1B
-	 * */
-	
-	
+	/**
+	 * The quick sort variant algorithm which uses insertion sort for smaller subarrays
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 * @param k The insertion constant (the maximum size of subarray to use insertion sort for)
+	 */
 	public static void HybridQuickSort(int[] A, int p, int r, int k) {
 		if(p < r) {
 			//Partition into 2 halves, then either sort recursively or with insertion sort depending
@@ -66,7 +84,13 @@ public class Sorts {
 		}
 	}
 	
-	
+	/**
+	 * The insertion sort algorithm for sorting subarrays
+	 * 
+	 * @param a The array to sort
+	 * @param start The starting index of the portion to be sorted
+	 * @param end The ending index of the portion to be sorted
+	 */
 	public static void InsertionSort(int[] a, int start, int end) {
 		for(int j = start + 1; j < end + 1; j++) {
 			//initialise key
@@ -83,12 +107,13 @@ public class Sorts {
 	}
 	
 	
-	/*
-	 * PART 1C
-	 * */
-	
-	
-	
+	/**
+	 * The quick sort variant algorithm which uses median of 3 partitioning
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static void QuickSortMO3(int[] A, int p, int r) {
 		if(p < r) {
 			//Partition array and sort each half
@@ -99,6 +124,13 @@ public class Sorts {
 	}
 	
 	
+	/**
+	 * A helper method to sort elements around a chosen pivot (the median of the first, middle and last element)
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static int PartitionMO3(int[] A, int p, int r) {
 		
 		//Sort the start, middle and end elements of the array so the median is last
@@ -133,11 +165,13 @@ public class Sorts {
 	}
 	
 	
-	/*
-	 * PART 1D
-	 * */
-	
-	
+	/**
+	 * The quick sort variant algorithm which also sorts all elements equal to the current partition
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param s The ending index of the portion to be sorted
+	 */
 	public static void QuickSort3Way(int[] A, int p, int s) {
 		if(p < s) {
 			//get indices of start and end of section of repeated pivot values
@@ -151,7 +185,14 @@ public class Sorts {
 		}
 	}
 	
-	
+
+	/**
+	 * A helper method to sort elements around a chosen pivot (the last element) including all equal values
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static int[] Partition3Way(int[] A, int p, int r) {
 		
 		//initialise pivot as last value
@@ -193,11 +234,14 @@ public class Sorts {
 	}
 	
 	
-	/*
-	 * PART 2
-	 * */
-	
-	
+	/**
+	 * The merge function for merging two subarrays in descending order
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param q The index splitting the two subarrays to be merged
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static void Merge(int[] A, int p, int q, int r) {
 		//Create an array for each half
 		int n1 = q - p + 1;
@@ -206,7 +250,7 @@ public class Sorts {
 		int[] L = new int[n1 + 1];
 		int[] R = new int[n2 + 1];
 		
-		//Copy halves over and add a max value at the end of each
+		//Copy halves over and add a max value sentinel at the end of each
 		for(int c1 = p; c1 < q+1; c1++) {
 			L[c1-p] = A[c1]; 
 		}
@@ -233,7 +277,13 @@ public class Sorts {
 		}
 	}
 	
-	
+	/**
+	 * The merge function for merging two subarrays in descending order
+	 * 
+	 * @param A The array to sort
+	 * @param p The starting index of the portion to be sorted
+	 * @param r The ending index of the portion to be sorted
+	 */
 	public static void  MergeSort(int[] A, int p, int r){
 		if(p < r) {
 			//Split into 2 halves
@@ -246,11 +296,12 @@ public class Sorts {
 	}
 	
 	
-	/*
-	 * PART 3
-	 * */
-	
-	
+	/**
+	 * Creates an array designed to make the median of 3 partitioning scheme run in O(n) time
+	 * 
+	 * @param n The size of the desired array
+	 * @return A The generated array
+	 */	
 	public static int[] pathologicalArray(int n) {
 		
 		//Create array of size n
